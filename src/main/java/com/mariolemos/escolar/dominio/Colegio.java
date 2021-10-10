@@ -1,6 +1,7 @@
 package com.mariolemos.escolar.dominio;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,29 +9,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Contato implements Serializable {	
+public class Colegio implements Serializable {	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String contato;
-	private String tipo;
+	private String nome;
+	private int horario;
 	
-	@ManyToMany(mappedBy = "contatos")
-	private List<Colegio> colegios = new ArrayList<>();	
-	
-	public Contato() {		
+	@ManyToMany
+	@JoinTable(name= "COLEGIO_CONTATO", joinColumns = @JoinColumn(name = "colegio_id"), inverseJoinColumns = @JoinColumn(name = "contato_id"))
+	private List<Contato> contatos = new  ArrayList<>();
+		
+	public Colegio() {
+		
 	}
 	
-	public Contato(Integer id, String contato, String tipo) {
-		
+	public Colegio(Integer id, String nome, int horario) {
 		this.id = id;
-		this.contato = contato;
-		this.tipo = tipo;		
+		this.nome = nome;
+		this.horario = horario;
 	}
 	
 	public Integer getId() {
@@ -41,37 +45,37 @@ public class Contato implements Serializable {
 		this.id = id;
 	}
 	
-	public String getContato() {
-		return contato;
+	public String getNome() {
+		return nome;
 	}
 	
-	public void setContato(String contato) {
-		this.contato = contato;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getHorario() {
+		return horario;
 	}
 	
-	public String getTipo() {
-		return tipo;
+	public void setHorario(int horario) {
+		this.horario = horario;
 	}
 	
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+
+	public List<Contato> getContatos() {
+		return contatos;
 	}
-	
+
+	public void setContatos(List<Contato> contatos) {
+		this.contatos = contatos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
-	}
-	
-
-	public List<Colegio> getColegios() {
-		return colegios;
-	}
-
-	public void setColegios(List<Colegio> colegios) {
-		this.colegios = colegios;
 	}
 
 	@Override
@@ -82,7 +86,7 @@ public class Contato implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Contato other = (Contato) obj;
+		Colegio other = (Colegio) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -90,5 +94,6 @@ public class Contato implements Serializable {
 			return false;
 		return true;
 	}
-
+	
 }
+
