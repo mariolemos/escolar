@@ -1,11 +1,16 @@
 package com.mariolemos.escolar.dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Veiculo implements Serializable {
@@ -20,7 +25,9 @@ public class Veiculo implements Serializable {
 	private String placa;
 	private String alvara;
 	
-	//private List<Condutor> condutores = new ArrayList<>();
+	@ManyToMany
+	@JoinTable(name = "VEICULO_CONDUTOR", joinColumns = @JoinColumn(name="veiculo_id"), inverseJoinColumns = @JoinColumn(name="condutor_id"))
+	private List<Condutor> condutores = new ArrayList<>();
 	
 	public Veiculo() {
 		
@@ -83,13 +90,13 @@ public class Veiculo implements Serializable {
 		this.alvara = alvara;
 	}
 	
-/*	public List<Condutor> getCondutores() {
+	public List<Condutor> getCondutores() {
 		return condutores;
 	}
 
 	public void setCondutores(List<Condutor> condutores) {
 		this.condutores = condutores;
-	}*/
+	}
 
 	@Override
 	public int hashCode() {

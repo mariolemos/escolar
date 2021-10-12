@@ -1,12 +1,15 @@
 package com.mariolemos.escolar.dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -26,6 +29,10 @@ public class Endereco implements Serializable {
 	@JoinColumn(name="cidade_id")
 	private Cidade cidade;
 	
+	@ManyToMany
+	@JoinColumn(name="pessoa_id")
+	private List<Pessoa> pessoas = new ArrayList<>();
+	
 	public Endereco() {
 		
 	}
@@ -38,6 +45,7 @@ public class Endereco implements Serializable {
 		this.bairro = bairro;
 		this.cep = cep;
 		this.cidade = cidade;
+		
 	}
 
 	public Integer getId() {
@@ -94,6 +102,15 @@ public class Endereco implements Serializable {
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}
+	
+
+	public List<Pessoa> getPessoas() {
+		return pessoas;
+	}
+
+	public void setPessoa(List<Pessoa> pessoas) {
+		this.pessoas = pessoas;
 	}
 
 	@Override

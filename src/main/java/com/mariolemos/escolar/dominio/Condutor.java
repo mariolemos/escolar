@@ -1,8 +1,11 @@
 package com.mariolemos.escolar.dominio;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Condutor extends Pessoa {		
@@ -11,7 +14,8 @@ public class Condutor extends Pessoa {
 	private int cnh;
 	private String categoria;
 	
-	//private List<Veiculo> veiculos = new ArrayList<>();
+	@ManyToMany(mappedBy = "condutores")
+	private List<Veiculo> veiculos = new ArrayList<>();
 	
 	public Condutor() {
 		
@@ -39,13 +43,13 @@ public class Condutor extends Pessoa {
 		this.categoria = categoria;
 	}
 
-/*	public List<Veiculo> getVeiculos() {
+	public List<Veiculo> getVeiculos() {
 		return veiculos;
 	}
 
 	public void setVeiculos(List<Veiculo> veiculos) {
 		this.veiculos = veiculos;
-	}*/
+	}
 	
 		
 }

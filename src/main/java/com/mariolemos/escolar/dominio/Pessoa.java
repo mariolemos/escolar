@@ -1,7 +1,9 @@
 package com.mariolemos.escolar.dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -23,7 +29,11 @@ public class Pessoa implements Serializable{
 	private String cpf;
 	private String rg;
 	
-
+	
+	@ManyToMany
+	@JoinTable(name= "PESSOA_ENDERECO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "endereco_id"))
+	private List<Endereco> enderecos = new ArrayList<>();
+	
 	//@ManyToOne
 	//@JoinTable(name= "PESSOA_CONTATO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "contato_id"))
 	//private List<Contato> contatos = new  ArrayList<>();
@@ -80,7 +90,6 @@ public class Pessoa implements Serializable{
 		this.rg = rg;
 	}
 	
-
 /*	public List<Contato> getContatos() {
 		return contatos;
 	}
@@ -88,6 +97,14 @@ public class Pessoa implements Serializable{
 	public void setContatos(List<Contato> contatos) {
 		this.contatos = contatos;
 	}*/
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
 
 	@Override
 	public int hashCode() {
