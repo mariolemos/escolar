@@ -2,11 +2,16 @@ package com.mariolemos.escolar.dominio;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Condutor extends Pessoa {		
 	private static final long serialVersionUID = 1L;
 	
 	private int cnh;
 	private String categoria;
+	
+	//private List<Veiculo> veiculos = new ArrayList<>();
 	
 	public Condutor() {
 		
@@ -33,5 +38,14 @@ public class Condutor extends Pessoa {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+
+/*	public List<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}*/
+	
 		
 }

@@ -20,6 +20,8 @@ public class Veiculo implements Serializable {
 	private String placa;
 	private String alvara;
 	
+	//private List<Condutor> condutores = new ArrayList<>();
+	
 	public Veiculo() {
 		
 	}
@@ -80,6 +82,14 @@ public class Veiculo implements Serializable {
 	public void setAlvara(String alvara) {
 		this.alvara = alvara;
 	}
+	
+/*	public List<Condutor> getCondutores() {
+		return condutores;
+	}
+
+	public void setCondutores(List<Condutor> condutores) {
+		this.condutores = condutores;
+	}*/
 
 	@Override
 	public int hashCode() {

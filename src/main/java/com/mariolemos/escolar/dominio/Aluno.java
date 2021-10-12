@@ -2,6 +2,9 @@ package com.mariolemos.escolar.dominio;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Aluno extends Pessoa{
 	private static final long serialVersionUID = 1L;
 	
@@ -52,7 +55,7 @@ public class Aluno extends Pessoa{
 		this.turma = turma;
 	}
 
-	public boolean isRota() {
+	public boolean setRota() {
 		return rota;
 	}
 

@@ -46,10 +46,7 @@ public class EscolarApplication implements CommandLineRunner {
 		
 		contatoRepository.saveAll(Arrays.asList(cont1, cont2, cont3));
 		colegioRepository.saveAll(Arrays.asList(cole1, cole2, cole3));
-		
-		
-		
-		
+							
 	}
 
 }

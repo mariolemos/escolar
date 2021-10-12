@@ -2,6 +2,9 @@ package com.mariolemos.escolar.dominio;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Responsavel extends Pessoa {	
 	private static final long serialVersionUID = 1L;
 	

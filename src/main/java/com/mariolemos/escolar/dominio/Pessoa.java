@@ -7,8 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Pessoa implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -19,6 +22,11 @@ public class Pessoa implements Serializable{
 	private Date dtNascimento;
 	private String cpf;
 	private String rg;
+	
+
+	//@ManyToOne
+	//@JoinTable(name= "PESSOA_CONTATO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "contato_id"))
+	//private List<Contato> contatos = new  ArrayList<>();
 	
 	public Pessoa() {
 		
@@ -71,6 +79,15 @@ public class Pessoa implements Serializable{
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
+	
+
+/*	public List<Contato> getContatos() {
+		return contatos;
+	}
+
+	public void setContatos(List<Contato> contatos) {
+		this.contatos = contatos;
+	}*/
 
 	@Override
 	public int hashCode() {

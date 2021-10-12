@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Colegio implements Serializable {	
 	private static final long serialVersionUID = 1L;
@@ -24,11 +22,10 @@ public class Colegio implements Serializable {
 	private String nome;
 	private int horario;
 	
-	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name= "COLEGIO_CONTATO", joinColumns = @JoinColumn(name = "colegio_id"), inverseJoinColumns = @JoinColumn(name = "contato_id"))
-	private List<Contato> contatos = new  ArrayList<>();
-		
+	private List<Contato> contatos = new ArrayList<>();
+			
 	public Colegio() {
 		
 	}
@@ -70,7 +67,7 @@ public class Colegio implements Serializable {
 
 	public void setContatos(List<Contato> contatos) {
 		this.contatos = contatos;
-	}
+	}	
 
 	@Override
 	public int hashCode() {
