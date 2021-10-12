@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Colegio implements Serializable {	
@@ -25,15 +26,20 @@ public class Colegio implements Serializable {
 	@ManyToMany
 	@JoinTable(name= "COLEGIO_CONTATO", joinColumns = @JoinColumn(name = "colegio_id"), inverseJoinColumns = @JoinColumn(name = "contato_id"))
 	private List<Contato> contatos = new ArrayList<>();
-			
+	
+	@ManyToOne
+	@JoinColumn(name="endereco_id")
+	private Endereco endereco;
+		
 	public Colegio() {
 		
 	}
 	
-	public Colegio(Integer id, String nome, int horario) {
+	public Colegio(Integer id, String nome, int horario, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
 		this.horario = horario;
+		this.endereco = endereco;
 	}
 	
 	public Integer getId() {
@@ -68,6 +74,15 @@ public class Colegio implements Serializable {
 	public void setContatos(List<Contato> contatos) {
 		this.contatos = contatos;
 	}	
+	
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	@Override
 	public int hashCode() {
