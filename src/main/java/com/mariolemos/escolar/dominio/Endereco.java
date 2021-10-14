@@ -1,7 +1,6 @@
 package com.mariolemos.escolar.dominio;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -26,18 +24,18 @@ public class Endereco implements Serializable {
 	private String cep;
 	
 	@ManyToOne
-	@JoinColumn(name="cidade_id")
+	//@JoinColumn(name="cidade_id")
 	private Cidade cidade;
 	
-	@ManyToMany
-	@JoinColumn(name="pessoa_id")
-	private List<Pessoa> pessoas = new ArrayList<>();
+	@ManyToOne
+//	@JoinColumn(name="pessoa_id")
+	private Pessoa pessoa;
 	
 	public Endereco() {
 		
 	}
 
-	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Cidade cidade) {
+	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Cidade cidade, Pessoa pessoa) {
 		this.id = id;
 		this.logradouro = logradouro;
 		this.numero = numero;
@@ -45,6 +43,7 @@ public class Endereco implements Serializable {
 		this.bairro = bairro;
 		this.cep = cep;
 		this.cidade = cidade;
+		this.pessoa = pessoa;
 		
 	}
 
@@ -105,12 +104,12 @@ public class Endereco implements Serializable {
 	}
 	
 
-	public List<Pessoa> getPessoas() {
-		return pessoas;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setPessoa(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	@Override

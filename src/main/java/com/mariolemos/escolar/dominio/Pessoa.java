@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,8 +31,8 @@ public class Pessoa implements Serializable{
 	private String rg;
 	
 	
-	@ManyToMany
-	@JoinTable(name= "PESSOA_ENDERECO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "endereco_id"))
+	@OneToMany(mappedBy = "pessoa" , cascade = CascadeType.ALL)
+//	@JoinTable(name= "PESSOA_ENDERECO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "endereco_id"))
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	//@ManyToOne
