@@ -39,7 +39,7 @@ public class Colegio implements Serializable {
 	public Colegio() {
 		
 	}
-	
+		
 	public Colegio(Integer id, String nome, int horario, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
