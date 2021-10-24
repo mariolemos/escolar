@@ -12,9 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -35,9 +32,9 @@ public class Pessoa implements Serializable{
 //	@JoinTable(name= "PESSOA_ENDERECO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "endereco_id"))
 	private List<Endereco> enderecos = new ArrayList<>();
 	
-	//@ManyToOne
+	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
 	//@JoinTable(name= "PESSOA_CONTATO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "contato_id"))
-	//private List<Contato> contatos = new  ArrayList<>();
+	private List<Contato> contatos = new  ArrayList<>();
 	
 	public Pessoa() {
 		
@@ -91,13 +88,13 @@ public class Pessoa implements Serializable{
 		this.rg = rg;
 	}
 	
-/*	public List<Contato> getContatos() {
+	public List<Contato> getContatos() {
 		return contatos;
 	}
 
 	public void setContatos(List<Contato> contatos) {
 		this.contatos = contatos;
-	}*/
+	}
 
 	public List<Endereco> getEnderecos() {
 		return enderecos;

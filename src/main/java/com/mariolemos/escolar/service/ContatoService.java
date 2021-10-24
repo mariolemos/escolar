@@ -19,9 +19,8 @@ public class ContatoService {
 		Optional<Contato> obj = repo.findById(id);
 		return obj.orElse(null);		
 	}
-	public List<Contato> buscarTodos() {
-		List<Contato> obj = repo.findAll();
-		return obj;		
+	public List<Contato> buscarTodos() {		
+		return repo.findAll();		
 	}
 
 }

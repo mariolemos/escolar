@@ -25,7 +25,7 @@ public class ContatoResource {
 		return ResponseEntity.ok().body(obj);		
 	}
 	
-	@RequestMapping(value="/contatos", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Contato>> buscarTodos() {
 		List<Contato> obj = service.buscarTodos();
 		return ResponseEntity.ok().body(obj);		

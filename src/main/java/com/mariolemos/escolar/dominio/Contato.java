@@ -1,14 +1,13 @@
 package com.mariolemos.escolar.dominio;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Contato implements Serializable {	
@@ -20,8 +19,11 @@ public class Contato implements Serializable {
 	private String contato;
 	private String tipo;			
 	
-	@ManyToMany(mappedBy = "contatos")
-	private List<Colegio> colegios = new ArrayList<>();	
+	@ManyToOne
+	private Colegio colegio;
+	
+	@ManyToOne
+	private Pessoa pessoa;
 
 	public Contato() {	
 		
@@ -56,15 +58,22 @@ public class Contato implements Serializable {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public List<Colegio> getColegios() {
-		return colegios;
+	public Colegio getColegio() {
+		return colegio;
 	}
 
-	public void setColegios(List<Colegio> colegios) {
-		this.colegios = colegios;
+	public void setColegio(Colegio colegio) {
+		this.colegio = colegio;
+	}
+			
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
