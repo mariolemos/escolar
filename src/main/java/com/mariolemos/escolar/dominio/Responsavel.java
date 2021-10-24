@@ -8,12 +8,15 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Responsavel extends Pessoa {	
 	private static final long serialVersionUID = 1L;
 	
 	private String parentesco;
 	
+//	@JsonIgnore
 	@OneToMany(mappedBy = "responsavel", cascade = CascadeType.ALL)
 	private List<Aluno> alunos = new ArrayList<>();
 	
