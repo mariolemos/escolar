@@ -19,5 +19,18 @@ public class AlunoService {
 		Optional<Aluno> obj = repo.findById(id);
 		return obj.orElse(null);		
 	}
+	
+	public Aluno insert(Aluno obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
+	
+	public Aluno update(Aluno obj) {
+		return repo.save(obj);
+	}
+	
+	public void delete(Integer id) {
+		repo.deleteById(id);
+	}
 
 }
