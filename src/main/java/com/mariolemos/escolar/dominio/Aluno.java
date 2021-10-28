@@ -3,6 +3,9 @@ package com.mariolemos.escolar.dominio;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Aluno extends Pessoa{
@@ -16,11 +19,18 @@ public class Aluno extends Pessoa{
 	private String mae;
 	private String convMedico;
 	
+	@ManyToOne
+	@JsonIgnore
+	private Colegio colegio;
+	
+	@ManyToOne
+	private Responsavel responsavel;
+	
 	public Aluno() {
 		
 	}
 
-	public Aluno(Integer id, String nome, Date dtNascimento, String cpf, String rg, String turno, String serie, String turma, boolean rota, String pai, String mae, String convMedico) {
+	public Aluno(Integer id, String nome, Date dtNascimento, String cpf, String rg, String turno, String serie, String turma, boolean rota, String pai, String mae, String convMedico, Colegio colegio) {
 		super(id, nome, dtNascimento, cpf, rg);
 		this.turno = turno;
 		this.serie = serie;
@@ -29,6 +39,7 @@ public class Aluno extends Pessoa{
 		this.pai = pai;
 		this.mae = mae;
 		this.convMedico = convMedico;
+		this.colegio = colegio;
 	}
 
 	public String getTurno() {
@@ -55,7 +66,7 @@ public class Aluno extends Pessoa{
 		this.turma = turma;
 	}
 
-	public boolean setRota() {
+	public boolean getRota() {
 		return rota;
 	}
 
@@ -86,8 +97,21 @@ public class Aluno extends Pessoa{
 	public void setConvMedico(String convMedico) {
 		this.convMedico = convMedico;
 	}
-	
-	
-	
 
+	public Colegio getColegio() {
+		return colegio;
+	}
+
+	public void setColegio(Colegio colegio) {
+		this.colegio = colegio;
+	}
+
+	public Responsavel getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(Responsavel responsavel) {
+		this.responsavel = responsavel;
+	}
+	
 }

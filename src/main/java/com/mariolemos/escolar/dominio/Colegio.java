@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Colegio implements Serializable {	
@@ -23,18 +25,21 @@ public class Colegio implements Serializable {
 	private String nome;
 	private int horario;
 	
-	@ManyToMany
-	@JoinTable(name= "COLEGIO_CONTATO", joinColumns = @JoinColumn(name = "colegio_id"), inverseJoinColumns = @JoinColumn(name = "contato_id"))
+	@OneToMany(mappedBy = "colegio",  cascade = CascadeType.ALL)
+	//@JoinTable(name= "COLEGIO_CONTATO", joinColumns = @JoinColumn(name = "colegio_id"), inverseJoinColumns = @JoinColumn(name = "contato_id"))
 	private List<Contato> contatos = new ArrayList<>();
 	
 	@ManyToOne
-	@JoinColumn(name="endereco_id")
+	//@JoinColumn(name="endereco_id")
 	private Endereco endereco;
+	
+	@OneToMany(mappedBy = "colegio", cascade = CascadeType.ALL)
+	private List<Aluno> alunos = new ArrayList<>();
 		
 	public Colegio() {
 		
 	}
-	
+		
 	public Colegio(Integer id, String nome, int horario, Endereco endereco) {
 		this.id = id;
 		this.nome = nome;
@@ -82,6 +87,15 @@ public class Colegio implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+	
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 
 	@Override
