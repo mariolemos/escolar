@@ -14,12 +14,14 @@ import com.mariolemos.escolar.Repositories.ContatoRepository;
 import com.mariolemos.escolar.Repositories.EnderecoRepository;
 import com.mariolemos.escolar.Repositories.EstadoRepository;
 import com.mariolemos.escolar.Repositories.PessoaRepository;
+import com.mariolemos.escolar.dominio.Aluno;
 import com.mariolemos.escolar.dominio.Cidade;
 import com.mariolemos.escolar.dominio.Colegio;
 import com.mariolemos.escolar.dominio.Contato;
 import com.mariolemos.escolar.dominio.Endereco;
 import com.mariolemos.escolar.dominio.Estado;
 import com.mariolemos.escolar.dominio.Pessoa;
+import com.mariolemos.escolar.dominio.Responsavel;
 import com.sun.xml.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 @SpringBootApplication
@@ -67,6 +69,7 @@ public class EscolarApplication implements CommandLineRunner {
 		Pessoa pess1 = new Pessoa(null, "Mário Lemos", sdf.parse("15/03/1964") , "28560043500", "01819077-47");
 		Pessoa pess2 = new Pessoa(null, "Wagner Lemos", sdf.parse("01/06/1994") , "85806128539", "1432704354");
 		Pessoa pess3 = new Pessoa(null, "Aline Lemos", sdf.parse("26/05/1991") , "28560043500", "01819077-47");
+		Pessoa res = new Responsavel(null, "teste", sdf.parse("10/10/1999"), "654654654", "654654654", "testsdad");
 		
 		
 		Endereco end1 =new Endereco(null, "Av. Dendezeiros", "150", "Casa", "Bomfim", "41150-115", cid1, pess1);
@@ -94,7 +97,7 @@ public class EscolarApplication implements CommandLineRunner {
 		contatoRepository.saveAll(Arrays.asList(cont1, cont2, cont3));		
 		estadoRepository.saveAll(Arrays.asList(est1));
 		//cidadeRepository.save(cid1);
-		pessoaRepository.saveAll(Arrays.asList(pess1, pess2, pess3));
+		pessoaRepository.saveAll(Arrays.asList(pess1, pess2, pess3, res));
 		//enderecoRepository.saveAll(Arrays.asList(end1,end2,end3));
 		//colegioRepository.saveAll(Arrays.asList(cole1, cole2, cole3));		
 						
