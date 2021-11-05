@@ -26,16 +26,16 @@ public class Configuracao extends WebSecurityConfigurerAdapter{
 	
 	private static final String[] PUBLIC_MATCHERS = {
 			"/h2-console/**",
-			"/pessoas/**",
+			"/alunos/**",
 			"/usuarios/**"
 	};
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-//		if(Arrays.asList(env.getActiveProfiles()).contains("test")) {
-//			http.headers().frameOptions().disable();
-//		}
+		if(Arrays.asList(env.getActiveProfiles()).contains("test")) {
+		}
+		http.headers().frameOptions().disable();
 				
 		http.cors().and().csrf().disable();
 		http.authorizeRequests()
