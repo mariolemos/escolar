@@ -20,7 +20,7 @@ public class Aluno extends Pessoa{
 	private String convMedico;
 	
 	@ManyToOne
-	@JsonIgnore
+	
 	private Colegio colegio;
 	
 	@ManyToOne

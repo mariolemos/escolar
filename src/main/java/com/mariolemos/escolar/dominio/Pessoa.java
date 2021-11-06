@@ -14,7 +14,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -25,16 +27,17 @@ public class Pessoa implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dtNascimento;
 	private String cpf;
 	private String rg;
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "pessoa" , cascade = CascadeType.ALL)
 //	@JoinTable(name= "PESSOA_ENDERECO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "endereco_id"))
 	private List<Endereco> enderecos = new ArrayList<>();
 	
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
 	//@JoinTable(name= "PESSOA_CONTATO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "contato_id"))
 	private List<Contato> contatos = new  ArrayList<>();

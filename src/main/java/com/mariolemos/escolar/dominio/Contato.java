@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Contato implements Serializable {	
 	private static final long serialVersionUID = 1L;
@@ -18,9 +20,11 @@ public class Contato implements Serializable {
 	private String contato;
 	private String tipo;			
 	
+	@JsonIgnore
 	@ManyToOne
 	private Colegio colegio;
 	
+	@JsonIgnore
 	@ManyToOne
 	private Pessoa pessoa;
 

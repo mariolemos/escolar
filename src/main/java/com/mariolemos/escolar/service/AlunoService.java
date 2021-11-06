@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mariolemos.escolar.Repositories.AlunoRepository;
 import com.mariolemos.escolar.dominio.Aluno;
+import com.mariolemos.escolar.dominio.Contato;
 
 @Service
 public class AlunoService {
@@ -22,6 +23,9 @@ public class AlunoService {
 	
 	public Aluno insert(Aluno obj) {
 		obj.setId(null);
+		for(Contato contato: obj.getContatos()) {
+			contato.setPessoa(obj);			
+		}
 		return repo.save(obj);
 	}
 	

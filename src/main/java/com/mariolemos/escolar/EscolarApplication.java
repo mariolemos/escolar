@@ -93,6 +93,7 @@ public class EscolarApplication implements CommandLineRunner {
 				
 		Aluno alu1 = new Aluno(null, "Maria Fernanda", sdf.parse("15/03/2005"), "123456789", "5246789", "Vespertino", "7", "D", false, "Carlos", "Luiza", "Promedica", cole1);
 		
+		
 		pess1.setEnderecos(Arrays.asList(end1));
 		pess2.setEnderecos(Arrays.asList(end2));
 		pess3.setEnderecos(Arrays.asList(end3));
