@@ -2,7 +2,6 @@ package com.mariolemos.escolar;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -67,6 +66,7 @@ public class EscolarApplication implements CommandLineRunner {
 		Pessoa pess1 = new Pessoa(null, "Mário Lemos", sdf.parse("15/03/1964") , "28560043500", "01819077-47");
 		Pessoa pess2 = new Pessoa(null, "Wagner Lemos", sdf.parse("01/06/1994") , "85806128539", "1432704354");
 		Pessoa pess3 = new Pessoa(null, "Aline Lemos", sdf.parse("26/05/1991") , "28560043500", "01819077-47");
+
 		Pessoa pess4 = new Responsavel(null, "Carlos José", sdf.parse("22/10/2015"),  "45678932154", "2589634", "Tio");
 		
 		Contato cont1 = new Contato(null, "988322598", "Telefone");
@@ -114,7 +114,9 @@ public class EscolarApplication implements CommandLineRunner {
 		//contatoRepository.saveAll(Arrays.asList(cont1, cont2, cont3));		
 		estadoRepository.saveAll(Arrays.asList(est1));
 		//cidadeRepository.save(cid1);
+		
 		pessoaRepository.saveAll(Arrays.asList(pess1, pess2, pess3, pess4));
+		
 		//enderecoRepository.saveAll(Arrays.asList(end1,end2,end3));
 		colegioRepository.saveAll(Arrays.asList(cole1, cole2, cole3));		
 						
