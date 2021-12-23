@@ -3,10 +3,8 @@ package com.mariolemos.escolar.config;
 
 import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -21,13 +19,17 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 public class Configuracao extends WebSecurityConfigurerAdapter{
 	
-	@Autowired
-	private Environment env;
+//	@Autowired
+//	private Environment env;
 	
 	private static final String[] PUBLIC_MATCHERS = {
 			"/h2-console/**",
 			"/alunos/**",
-			"/pessoas/**"
+			"/pessoas/**",
+			"/colegios/**",
+			"/contatos/**",
+			"/responsaveis/**",
+			"/condutores/**"
 	};
 	
 	@Override

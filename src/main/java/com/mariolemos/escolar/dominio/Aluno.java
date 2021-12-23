@@ -5,8 +5,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Aluno extends Pessoa{
 	private static final long serialVersionUID = 1L;
@@ -19,8 +17,7 @@ public class Aluno extends Pessoa{
 	private String mae;
 	private String convMedico;
 	
-	@ManyToOne
-	
+	@ManyToOne	
 	private Colegio colegio;
 	
 	@ManyToOne

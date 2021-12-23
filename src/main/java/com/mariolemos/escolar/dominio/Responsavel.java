@@ -16,7 +16,7 @@ public class Responsavel extends Pessoa {
 	
 	private String parentesco;
 	
-//	@JsonIgnore
+	@JsonIgnore
 	@OneToMany(mappedBy = "responsavel", cascade = CascadeType.ALL)
 	private List<Aluno> alunos = new ArrayList<>();
 	

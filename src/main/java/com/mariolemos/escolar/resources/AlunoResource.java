@@ -1,6 +1,7 @@
 package com.mariolemos.escolar.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +23,6 @@ public class AlunoResource {
 	@Autowired
 	private AlunoService service;
 	
-	@RequestMapping(value = "/{id}" , method = RequestMethod.GET)
-	public ResponseEntity<Aluno> buscar(@PathVariable Integer id){
-		Aluno obj = service.Buscar(id);
-		return ResponseEntity.ok().body(obj);
-	}
-	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Aluno obj){
 		obj = service.insert(obj);
@@ -35,7 +30,20 @@ public class AlunoResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value="/{id}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+	public ResponseEntity<Aluno> buscar(@PathVariable Integer id){
+		Aluno obj = service.Buscar(id);
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<Aluno>> buscarTodos() {
+		List<Aluno> obj = service.buscarTodos();
+		return ResponseEntity.ok().body(obj);
+	}
+	
+		
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Aluno obj, @PathVariable Integer id){
 		obj.setId(id);
 		obj = service.update(obj);

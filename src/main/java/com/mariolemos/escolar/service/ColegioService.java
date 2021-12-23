@@ -14,9 +14,23 @@ public class ColegioService {
 	@Autowired
 	private ColegioRepository repo;
 	
+	public Colegio inserir(Colegio obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
+	
 	public Colegio buscar(Integer id) {
 		Optional<Colegio> obj = repo.findById(id);		
 		return obj.orElse(null);
+	}
+	
+	public Colegio update(Colegio obj) {
+		return repo.save(obj);
+		
+	}
+	
+	public void delete(Integer id) {
+		repo.deleteById(id);
 	}
 
 }
