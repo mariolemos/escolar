@@ -36,6 +36,7 @@ public class DBService {
 	public void instantiateTestDatabase() throws ParseException {
 		
 		Estado est1 = new Estado(null, "Bahia");
+		Estado est2 = new Estado(null, "Ceará");
 
 		Cidade cid1 = new Cidade(null, "Salvador", est1);
 
@@ -82,7 +83,7 @@ public class DBService {
 		cole1.setContatos(Arrays.asList(cont4));
 		cole1.setAlunos(Arrays.asList(alu1, alu2));
 	
-		estadoRepository.saveAll(Arrays.asList(est1));		
+		estadoRepository.saveAll(Arrays.asList(est1, est2));		
 
 		pessoaRepository.saveAll(Arrays.asList(pess1, pess2, pess3, pess4));
 		
