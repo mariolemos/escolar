@@ -87,9 +87,7 @@ public class DBService {
 
 		pessoaRepository.saveAll(Arrays.asList(pess1, pess2, pess3, pess4));
 		
-		colegioRepository.saveAll(Arrays.asList(cole1, cole2, cole3));
-
-		
+		colegioRepository.saveAll(Arrays.asList(cole1, cole2, cole3));		
 	}
 
 }
