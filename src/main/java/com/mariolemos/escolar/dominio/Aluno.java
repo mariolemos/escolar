@@ -27,8 +27,8 @@ public class Aluno extends Pessoa{
 		
 	}
 
-	public Aluno(Integer id, String nome, Date dtNascimento, String cpf, String rg, String turno, String serie, String turma, boolean rota, String pai, String mae, String convMedico, Colegio colegio) {
-		super(id, nome, dtNascimento, cpf, rg);
+	public Aluno(Integer id, String nome, Date dtNascimento, String cpf, String rg, String senha, String turno, String serie, String turma, boolean rota, String pai, String mae, String convMedico, Colegio colegio) {
+		super(id, nome, dtNascimento, cpf, rg, senha);
 		this.turno = turno;
 		this.serie = serie;
 		this.turma = turma;

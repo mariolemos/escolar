@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mariolemos.escolar.Repositories.ColegioRepository;
@@ -21,6 +22,9 @@ import com.mariolemos.escolar.dominio.Responsavel;
 
 @Service
 public class DBService {
+	
+	@Autowired
+	private BCryptPasswordEncoder pe;
 	
 	@Autowired
 	private ColegioRepository colegioRepository;
@@ -42,10 +46,10 @@ public class DBService {
 
 		est1.setCidades(Arrays.asList(cid1));
 
-		Pessoa pess1 = new Pessoa(null, "Mário Lemos", sdf.parse("15/03/1964"), "28560043500", "01819077-47");
-		Pessoa pess2 = new Pessoa(null, "Wagner Lemos", sdf.parse("01/06/1994"), "85806128539", "1432704354");
-		Pessoa pess3 = new Pessoa(null, "Aline Lemos", sdf.parse("26/05/1991"), "28560043500", "01819077-47");
-		Pessoa pess4 = new Responsavel(null, "Carlos José", sdf.parse("22/10/2015"), "45678932154", "2589634", "Tio");
+		Pessoa pess1 = new Pessoa(null, "Mário Lemos", sdf.parse("15/03/1964"), "28560043500", "01819077-47", pe.encode("123"));
+		Pessoa pess2 = new Pessoa(null, "Wagner Lemos", sdf.parse("01/06/1994"), "85806128539", "1432704354", pe.encode("456"));
+		Pessoa pess3 = new Pessoa(null, "Aline Lemos", sdf.parse("26/05/1991"), "28560043500", "01819077-47", pe.encode("789"));
+		Pessoa pess4 = new Responsavel(null, "Carlos José", sdf.parse("22/10/2015"), "45678932154", "2589634", pe.encode("321"), "Tio");
 
 		Contato cont1 = new Contato(null, "988322598", "Telefone");
 		Contato cont2 = new Contato(null, "lemosmm@bol.com.br", "E-mail");
@@ -68,9 +72,9 @@ public class DBService {
 		Colegio cole3 = new Colegio(null, "CPM Lobato", 8, end3);
 		cont4.setColegio(cole1);
 
-		Aluno alu1 = new Aluno(null, "Maria Fernanda", sdf.parse("15/03/2005"), "123456789", "5246789", "Vespertino",
+		Aluno alu1 = new Aluno(null, "Maria Fernanda", sdf.parse("15/03/2005"), "123456789", "5246789", "444","Vespertino",
 				"7", "D", false, "Carlos", "Luiza", "Promedica", cole1);
-		Aluno alu2 = new Aluno(null, "Maria Edoarda", sdf.parse("20/05/2005"), "987654321", "987654321", "Matutino",
+		Aluno alu2 = new Aluno(null, "Maria Edoarda", sdf.parse("20/05/2005"), "987654321", "987654321", "555", "Matutino",
 				"9", "D", false, "Carlos", "Monica", "Promedica", cole1);
 
 		pess1.setEnderecos(Arrays.asList(end1));

@@ -15,6 +15,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -30,6 +31,9 @@ public class Pessoa implements Serializable{
 	private String cpf;
 	private String rg;
 	
+	@JsonIgnore
+	private String senha;
+	
 	
 	@OneToMany(mappedBy = "pessoa" , cascade = CascadeType.ALL)
 //	@JoinTable(name= "PESSOA_ENDERECO", joinColumns = @JoinColumn(name = "pessoa_id"), inverseJoinColumns = @JoinColumn(name = "endereco_id"))
@@ -44,12 +48,13 @@ public class Pessoa implements Serializable{
 		
 	}
 
-	public Pessoa(Integer id, String nome, Date dtNascimento, String cpf, String rg) {	
+	public Pessoa(Integer id, String nome, Date dtNascimento, String cpf, String rg, String senha) {	
 		this.id = id;
 		this.nome = nome;
 		this.dtNascimento = dtNascimento;
 		this.cpf = cpf;
 		this.rg = rg;
+		this.senha = senha;
 	}
 
 	public Integer getId() {
@@ -92,6 +97,14 @@ public class Pessoa implements Serializable{
 		this.rg = rg;
 	}
 	
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
 	public List<Contato> getContatos() {
 		return contatos;
 	}
@@ -132,5 +145,7 @@ public class Pessoa implements Serializable{
 			return false;
 		return true;
 	}
+
+
 	
 }
