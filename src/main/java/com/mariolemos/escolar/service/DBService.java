@@ -85,6 +85,7 @@ public class DBService {
 		pess3.setEnderecos(Arrays.asList(end3));
 		pess1.setContatos(Arrays.asList(cont1, cont2, cont3));
 		//pess5.setContatos(Arrays.asList(cont1, cont2, cont3));
+		
 
 
 		pess4.setContatos(Arrays.asList(cont5));

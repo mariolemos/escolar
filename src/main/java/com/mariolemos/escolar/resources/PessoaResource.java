@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mariolemos.escolar.dominio.Aluno;
 import com.mariolemos.escolar.dominio.Condutor;
 import com.mariolemos.escolar.dominio.Pessoa;
+import com.mariolemos.escolar.dominio.Responsavel;
 import com.mariolemos.escolar.service.PessoaService;
 
 @RestController
@@ -30,6 +32,18 @@ public class PessoaResource {
 	@RequestMapping(value= "/condutor", method = RequestMethod.POST)
 	public ResponseEntity<Condutor> inserir(@RequestBody Condutor obj) {
 		obj = pessoaService.inserir(obj);
+		return ResponseEntity.ok().body(obj);		
+	}
+	
+	@RequestMapping(value= "/Aluno", method = RequestMethod.POST)
+	public ResponseEntity<Pessoa> inserir(@RequestBody Aluno obj) {
+		obj = pessoaService.inserir(obj);		
+		return ResponseEntity.ok().body(obj);		
+	}
+	
+	@RequestMapping(value= "/Responsavel", method = RequestMethod.POST)
+	public ResponseEntity<Pessoa> inserir(@RequestBody Responsavel obj) {
+		obj = pessoaService.inserir(obj);		
 		return ResponseEntity.ok().body(obj);		
 	}
 	
