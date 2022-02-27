@@ -38,6 +38,9 @@ public class Pessoa implements Serializable{
 	private String rg;
 	
 	@JsonIgnore
+	private String login;
+	
+	@JsonIgnore
 	private String senha;
 	
 	@ElementCollection
@@ -59,13 +62,14 @@ public class Pessoa implements Serializable{
 		
 	}
 
-	public Pessoa(Integer id, String nome, Date dtNascimento, String cpf, String rg, String senha) {	
+	public Pessoa(Integer id, String nome, Date dtNascimento, String cpf, String rg, String senha, String login) {	
 		this.id = id;
 		this.nome = nome;
 		this.dtNascimento = dtNascimento;
 		this.cpf = cpf;
 		this.rg = rg;
 		this.senha = senha;
+		this.login = login;
 		addPerfil(Perfil.PESSOA);
 	}
 
@@ -111,6 +115,10 @@ public class Pessoa implements Serializable{
 	
 	public String getSenha() {
 		return senha;
+	}
+	
+	public String getLogin() {
+		return login;
 	}
 	
 	public Set<Perfil> getPerfis() {

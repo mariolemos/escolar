@@ -47,11 +47,11 @@ public class DBService {
 
 		est1.setCidades(Arrays.asList(cid1));
 
-		Pessoa pess1 = new Pessoa(null, "Mário Lemos", sdf.parse("15/03/1964"), "28560043500", "01819077-47", pe.encode("123"));
-		Pessoa pess2 = new Pessoa(null, "Wagner Lemos", sdf.parse("01/06/1994"), "85806128539", "1432704354", pe.encode("456"));
-		Pessoa pess3 = new Pessoa(null, "Aline Lemos", sdf.parse("26/05/1991"), "28560043500", "01819077-47", pe.encode("789"));
-		Pessoa pess4 = new Responsavel(null, "Carlos José", sdf.parse("22/10/2015"), "45678932154", "2589634", pe.encode("321"), "Tio");
-		Pessoa pess5 = new Pessoa(null, "Augusto Sena", sdf.parse("15/03/1964"), "59043851027", "01819088-47", pe.encode("123"));
+		Pessoa pess1 = new Pessoa(null, "Mário Lemos", sdf.parse("15/03/1964"), "28560043500", "01819077-47", pe.encode("123"), "lemosmm@bol.com.br");
+		Pessoa pess2 = new Pessoa(null, "Wagner Lemos", sdf.parse("01/06/1994"), "85806128539", "1432704354", pe.encode("456"), "wagnerlemos@hotmail.com");
+		Pessoa pess3 = new Pessoa(null, "Aline Lemos", sdf.parse("26/05/1991"), "28560043500", "01819077-47", pe.encode("789"), "alinelemos@gmail.com");
+		Pessoa pess4 = new Responsavel(null, "Carlos José", sdf.parse("22/10/2015"), "45678932154", "2589634", pe.encode("321"), "Tio", "carlosjose@gmail.com");
+		Pessoa pess5 = new Pessoa(null, "Augusto Sena", sdf.parse("15/03/1964"), "59043851027", "01819088-47", pe.encode("123"), "augustosena@gmail.com");
 		pess5.addPerfil(Perfil.ADMIN);
 
 		Contato cont1 = new Contato(null, "988322598", "Telefone");
@@ -74,10 +74,10 @@ public class DBService {
 		Colegio cole3 = new Colegio(null, "CPM Lobato", 8, end3);
 		cont4.setColegio(cole1);
 
-		Aluno alu1 = new Aluno(null, "Maria Fernanda", sdf.parse("15/03/2005"), "123456789", "5246789", "444","Vespertino",
-				"7", "D", false, "Carlos", "Luiza", "Promedica", cole1);
+		Aluno alu1 = new Aluno(null, "Maria Fernanda", sdf.parse("15/03/2005"), "123456789", "5246789", "444", "Vespertino",
+				"7", "D",  "mariafernanda@gmail.com", false, "Carlos", "Luiza", "Promedica", cole1);
 		Aluno alu2 = new Aluno(null, "Maria Edoarda", sdf.parse("20/05/2005"), "987654321", "987654321", "555", "Matutino",
-				"9", "D", false, "Carlos", "Monica", "Promedica", cole1);
+				"9", "D",  "mariaeduarda@gmail.com",false, "Carlos", "Monica", "Promedica", cole1);
 
 		pess1.setEnderecos(Arrays.asList(end1));
 		pess5.setEnderecos(Arrays.asList(end1));

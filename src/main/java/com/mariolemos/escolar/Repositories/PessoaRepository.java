@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.mariolemos.escolar.dominio.Pessoa;
 
-public interface PessoaRepository extends JpaRepository<Pessoa, Integer>{
+public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
+	
+	Pessoa findByLogin(String login);
 
 }

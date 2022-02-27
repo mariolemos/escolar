@@ -24,8 +24,8 @@ public class Responsavel extends Pessoa {
 		
 	}
 
-	public Responsavel(Integer id, String nome, Date dtNascimento, String cpf, String rg, String senha, String parentesco) {
-		super(id, nome, dtNascimento, cpf, rg, senha);
+	public Responsavel(Integer id, String nome, Date dtNascimento, String cpf, String rg, String senha, String login, String parentesco) {
+		super(id, nome, dtNascimento, cpf, rg, senha, login);
 		this.parentesco = parentesco;
 	}
 

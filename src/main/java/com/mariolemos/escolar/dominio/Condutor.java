@@ -21,8 +21,8 @@ public class Condutor extends Pessoa {
 		
 	}
 
-	public Condutor(Integer id, String nome, Date dtNascimento, String cpf, String rg, String senha, int cnh, String categoria) {
-		super(id, nome, dtNascimento, cpf, rg, senha);
+	public Condutor(Integer id, String nome, Date dtNascimento, String cpf, String rg, String senha, String login, int cnh, String categoria) {
+		super(id, nome, dtNascimento, cpf, rg, senha, login);
 		this.cnh = cnh;
 		this.categoria = categoria;
 	}
