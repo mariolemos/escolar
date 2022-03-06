@@ -15,6 +15,9 @@ import com.mariolemos.escolar.dominio.Aluno;
 import com.mariolemos.escolar.dominio.Condutor;
 import com.mariolemos.escolar.dominio.Pessoa;
 import com.mariolemos.escolar.dominio.Responsavel;
+import com.mariolemos.escolar.enums.Perfil;
+import com.mariolemos.escolar.security.UserSS;
+import com.mariolemos.escolar.service.exceptions.AuthorizationException;
 
 @Service
 public class PessoaService {
@@ -49,6 +52,11 @@ public class PessoaService {
 	}
 			
 	public Pessoa buscarPorId(Integer id) {
+		
+		UserSS user = UserService.authenticated();
+		if (user==null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
 		Optional<Pessoa> pessoa = pessoaRepository.findById(id);
 		return pessoa.orElse(null);
 	}
